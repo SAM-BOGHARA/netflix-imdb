@@ -1,0 +1,62 @@
+.toolbar {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 240px;
+}
+
+@media (max-width: 600px) {
+    .toolbar {
+        margin-left: 0;
+    }
+    .image-link {
+        padding: 10% 10%;
+    }
+}
+.menubutton {
+    margin-right: 5px;
+}
+
+@media (min-width: 600px) {
+    .menubutton .drawer {
+        display: none;
+    }
+}
+
+.drawer {
+    width: 240px;
+    flex-shrink: 0;
+}
+
+.drawer-paper {
+    width: 240px;
+}
+
+.link-button:hover {
+    color: white !important;
+    text-decoration: none;
+}
+
+.image-link {
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+    width: 82%;
+}
+
+.links {
+    color: #4c4949;
+    text-decoration: none;
+}
+
+.genreImage {
+    filter: brightness(1);
+}
+
+@media (prefers-color-scheme: light) {
+    .genreImage {
+        filter: invert(1);
+    }
+}

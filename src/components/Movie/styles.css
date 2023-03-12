@@ -1,0 +1,41 @@
+.movie {
+    padding: 10px;
+}
+
+.title {
+    color: #000;
+    text-overflow: ellipsis;
+    width: 230px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.links{
+  align-items: center;
+  font-weight: bolder;
+  display: block;
+  text-decoration: none; 
+}
+.links:hover {
+  cursor: pointer;
+}
+
+
+@media (min-width: 0px) {
+  .links {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.image{
+  border-radius: 20px;
+  height: 300px;
+  margin-bottom: 10px;
+}
+
+.image:hover{
+  transform: scale(1.05);
+}
