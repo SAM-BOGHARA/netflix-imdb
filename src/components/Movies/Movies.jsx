@@ -1,18 +1,20 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { useGetMoviesQuery } from '../../services/TMDB';
-import { MovieList } from '..';
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { MovieList, Pagination } from '..';
+import { Box, CircularProgress, Typography, useMediaQuery } from '@mui/material';
 import { selectGenreOrCategory } from '../../features/createGenreOrCategory';
 import { useSelector } from 'react-redux';
 const Movies = () => {
-    const [page, setpage] = useState(1)
-    const { genreIdOrCategoryName , searchQuery } = useSelector((state) => state.currentGenreOrCategory)
-    const { data, error, isFetching } = useGetMoviesQuery({genreIdOrCategoryName, page , searchQuery});
-    console.log(data)
+    const [page, setPage] = useState(1)
+    const { genreIdOrCategoryName, searchQuery } = useSelector((state) => state.currentGenreOrCategory)
+    const { data, error, isFetching } = useGetMoviesQuery({ genreIdOrCategoryName, page, searchQuery });
+    const isLargeDevice = useMediaQuery((theme) => theme.breakpoints.only('lg'));
+    const numberOfMoviesToShowByScreenSize = isLargeDevice ? 16 : 18
+    // console.log(data)
 
     if (isFetching) {
         return (
-            <Box dislay="flex" justifyContent="center">
+            <Box display="flex" justifyContent="center">
                 <CircularProgress size="4rem" />
             </Box>
         )
@@ -32,8 +34,12 @@ const Movies = () => {
     if (error) return "An error has occured.";
 
     return (
+        <>
+            <MovieList  movies={data} numberOfMovies={numberOfMoviesToShowByScreenSize} />
+            <Pagination currentPage={ page } setPage = {setPage} totalPages = { data?.total_pages} />
+        </>
 
-        <MovieList movies={data} />
+
 
     )
 

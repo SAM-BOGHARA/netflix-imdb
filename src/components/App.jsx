@@ -3,7 +3,8 @@ import { CssBaseline } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
 import { Actors, MovieInformation, Movies, NavBar, Profile } from './'
 // import useStyles from './styles'
-import './styles.css';
+// import './styles.css';
+import './global.css'
 
 const App = () => {
     // const classes = useStyles();
@@ -12,10 +13,11 @@ const App = () => {
             <CssBaseline />
             <NavBar />
             <main className='content'>
-                <div className='toolbar' />
+                <div className='toolkit' />
                 <Routes>
                     <Route exact path="/movie/:id" element={<MovieInformation />} /> 
-                    <Route exact path="/" element={<Movies />} /> 
+                    <Route exact path= '/' element={<Movies />} /> 
+                    <Route exact path="/approved" element={<Movies />} />
                     <Route exact path="/actors/:id" element={<Actors />} /> 
                     <Route exact path="/profile/:id" element={<Profile />} /> 
                 </Routes>

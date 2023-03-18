@@ -1,0 +1,304 @@
+
+::-webkit-scrollbar{
+    width: 7px;
+}
+::-webkit-scrollbar-track{
+    background: #cfcfcf;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #a5a5a5;
+}
+
+* {
+    text-decoration: none;
+}
+
+.root {
+    display: flex;
+    height: 100%;
+}
+
+.toolkit {
+    height: 70px;
+     z-index: 100;
+}
+
+.content {
+    width: 100%;
+    flex-grow: 1;
+    padding: 2em;
+    /* width: 100%; */
+}
+
+.movie {
+    padding: 10px;
+}
+
+.title {
+    color: #000;
+    text-overflow: ellipsis;
+    width: 200px;
+    overflow: hidden;
+    white-space: wrap;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.movies--box {
+    align-content: center;
+}
+
+.links {
+    align-items: center;
+    font-weight: bolder;
+    display: block;
+    text-decoration: none;
+}
+.links:hover {
+    cursor: pointer;
+}
+
+@media (min-width: 0px) {
+    .links {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* .image {
+    border-radius: 20px;
+    height: 300px;
+    margin-bottom: 10px;
+} */
+
+.image:hover {
+    transform: scale(1.05);
+}
+
+.movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: auto;
+}
+
+@media (max-width: 600px) {
+    .movies-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .search-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .input {
+        margin-top: -10px;
+        margin-bottom: 10px;
+        color: #303030;
+        text-decoration: solid;
+    }
+}
+
+.toolbar {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 240px;
+}
+
+@media (max-width: 600px) {
+    .toolbar {
+        margin-left: 0;
+        flex-wrap: wrap;
+    }
+    .sidebar-image-link {
+        padding: 10% 10%;
+    }
+}
+
+.link-button:hover {
+    color: white !important;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    .toolbar {
+        margin-left: 0;
+    }
+}
+.menubutton {
+    margin-right: 5px;
+}
+
+@media (min-width: 600px) {
+    .menubutton {
+        display: none;
+    }
+    .drawer {
+        width: 240px;
+        flex-shrink: 0;
+    }
+}
+
+.drawer-paper {
+    width: 240px;
+}
+
+.link-button:hover {
+    color: white !important;
+    text-decoration: none;
+}
+
+.links {
+    color: #4c4949;
+    text-decoration: none;
+}
+
+.sidebar-image-link {
+    display: flex;
+    justify-content: center;
+    padding: 2% 0;
+}
+
+.sidebar-image {
+    width: 80%;
+}
+
+.genre-images {
+    height: 30px;
+    width: 30px;
+}
+
+/* Movie Information */
+
+
+@media (max-width: 960px) {
+    .movieinfo--poster,.actorpage--image {
+        margin: 0 auto;
+        /* width: 100%; */
+    }
+
+}
+
+@media (max-width: 600px) {
+    .movieinfo--container--spacearound {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .movieinfo--poster {
+        margin: 0 auto;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .actorpage--image {
+        margin: 0 auto;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .movieinfo--links {
+        padding: 0.5rem 1rem;
+    }
+
+    .movieinfo--genre-image {
+        height: 30px;
+        width: 30px;
+    }
+}
+
+.movieinfo--container--spacearound {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0 !important;
+}
+
+.movieinfo--poster {
+    border-radius: 20px;
+    box-shadow: 0.5em 1em 1em rgb(64, 64, 70);
+}
+
+.movieinfo--genres--container {
+    margin: 10px 0 !important;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.movieinfo--genre-image {
+    height: 30px;
+    width: 30px;
+    filter: brightness(1);
+    margin-right: 10px;
+}
+
+.movieinfo--links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+
+.movieinfo--cast--image{
+    width: 100%;
+    max-width: 7em;
+    height: 8em;
+    object-fit: cover;
+    border-radius: 10px ;
+}
+
+
+.movieinfo--button--container{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+@media (max-width: 600px){
+    .movieinfo--button--container{
+      flex-direction: column;  
+    }
+    .movieinfo--video{
+        width: 90%;
+        height: 50%;
+    }
+}
+
+
+.movieinfo--modal{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movieinfo--video{
+    width: 50%;
+    height: 50%; 
+}
+
+.actorpage--image{ 
+    /* margin-left: 10px;  */
+    max-width: 100%;
+
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0.5em 0.5em 1em;
+} 
+
+
+.pagination--container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination--button{
+    margin: 30px 2px;
+}
+
+.pagination--pageNumber{
+    margin: 0 20px !important;
+}

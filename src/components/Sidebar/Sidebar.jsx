@@ -1,13 +1,13 @@
 import React from 'react'
-import { Divider, List, ListItem, ListItemText, ListSubheader, ListItemIcon, Box, CircularProgress } from '@mui/material'
+import { Divider, List, ListItem, ListItemText, ListSubheader, ListItemIcon, Box, CircularProgress, Typography } from '@mui/material'
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles'
-import './styles.css'
+// import './styles.css'
 import { useGetGenresQuery } from '../../services/TMDB';
 import genreIcons from '../../assets/assets/genres'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectGenreOrCategory } from '../../features/createGenreOrCategory';
-
+import '../global.css'
 
 const categories = [
     { label: "Popular", value: "popular" },
@@ -24,12 +24,12 @@ const Sidebar = ({ setMobileOpen }) => {
     const { data, isFetching, error, } = useGetGenresQuery();
     const dispatch = useDispatch();
     const genreIdOrCategoryName = useSelector((state) => state.currentGenreOrCategory)
-    console.log(genreIdOrCategoryName)
-    console.log(data)
+    // console.log(genreIdOrCategoryName)
+    // console.log(data)
     return (
         <>
-            <Link to="/" className='image-link'>
-                <img className='image' src={theme.palette.mode === 'light' ? redLogo : blueLogo} alt="Filmpire Logo" />
+            <Link to="/" className='sidebar-image-link'>
+                <img className='sidebar-image' src={theme.palette.mode === 'light' ? redLogo : blueLogo} alt="Filmpire Logo" />
             </Link>
             <Divider />
             <List>
@@ -39,9 +39,11 @@ const Sidebar = ({ setMobileOpen }) => {
                     <Link className='links' key={label} to="/" >
                         <ListItem onClick={() => dispatch(selectGenreOrCategory(value))} button >
                             <ListItemIcon>
-                                <img className='genre-images' src={genreIcons[label.toLowerCase()]} alt="" />
+                                <img className='genre-images' src={genreIcons[label.toLowerCase()]} alt=""
+                                    style={{ filter: theme.palette.mode === 'dark' && 'invert(1)' }}
+                                />
                             </ListItemIcon>
-                            <ListItemText primary={label} />
+                            <Typography color="textPrimary" >{label}</Typography>
                         </ListItem>
                     </Link>
                 ))
@@ -60,9 +62,10 @@ const Sidebar = ({ setMobileOpen }) => {
                         <Link className='links' key={name} to="/" >
                             <ListItem onClick={() => dispatch(selectGenreOrCategory(id))} button >
                                 <ListItemIcon>
-                                    <img className='genre-images' src={genreIcons[name.toLowerCase()]} alt="" />
+                                    <img className='genre-images' src={genreIcons[name.toLowerCase()]} alt=""
+                                        style={{ filter: theme.palette.mode === 'dark' && 'invert(1)' }} />
                                 </ListItemIcon>
-                                <ListItemText primary={name} />
+                                <Typography color="textPrimary" >{name}</Typography>
                             </ListItem>
                         </Link>
                     ))}

@@ -12,13 +12,13 @@
 .links {
     color: #4c4949;
     text-decoration: none;
-    align-items: center;
+    /* align-items: center; */
 }
 
-.genre-images {
+/* .genre-images {
     height: 30px;
     width: 30px;
     filter: brightness(1);
-}
+} */
 
 
