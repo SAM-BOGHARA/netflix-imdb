@@ -1,12 +1,11 @@
-
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 7px;
 }
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
     background: #cfcfcf;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background: #a5a5a5;
 }
 
@@ -21,7 +20,7 @@
 
 .toolkit {
     height: 70px;
-     z-index: 100;
+    z-index: 100;
 }
 
 .content {
@@ -98,9 +97,11 @@
     .input {
         margin-top: -10px;
         margin-bottom: 10px;
-        color: #303030;
-        text-decoration: solid;
     }
+}
+.input {
+    box-shadow: none;
+    border-bottom: 1px solid black;
 }
 
 .toolbar {
@@ -169,19 +170,18 @@
 }
 
 .genre-images {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
 }
 
 /* Movie Information */
 
-
 @media (max-width: 960px) {
-    .movieinfo--poster,.actorpage--image {
+    .movieinfo--poster,
+    .actorpage--image {
         margin: 0 auto;
         /* width: 100%; */
     }
-
 }
 
 @media (max-width: 600px) {
@@ -204,8 +204,8 @@
     }
 
     .movieinfo--genre-image {
-        height: 30px;
-        width: 30px;
+        height: 40px;
+        width: 40px;
     }
 }
 
@@ -241,64 +241,99 @@
     text-decoration: none;
 }
 
-
-.movieinfo--cast--image{
+.movieinfo--cast--image {
     width: 100%;
     max-width: 7em;
     height: 8em;
     object-fit: cover;
-    border-radius: 10px ;
+    border-radius: 10px;
 }
 
-
-.movieinfo--button--container{
+.movieinfo--button--container {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
 }
 
-@media (max-width: 600px){
-    .movieinfo--button--container{
-      flex-direction: column;  
+@media (max-width: 600px) {
+    .movieinfo--button--container {
+        flex-direction: column;
     }
-    .movieinfo--video{
+    .movieinfo--video {
         width: 90%;
         height: 50%;
     }
 }
 
-
-.movieinfo--modal{
-    display:flex;
+.movieinfo--modal {
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.movieinfo--video{
+.movieinfo--video {
     width: 50%;
-    height: 50%; 
+    height: 50%;
 }
 
-.actorpage--image{ 
+.actorpage--image {
     /* margin-left: 10px;  */
     max-width: 100%;
 
     border-radius: 20px;
     object-fit: cover;
     box-shadow: 0.5em 0.5em 1em;
-} 
+}
 
-
-.pagination--container{
+.pagination--container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.pagination--button{
+.pagination--button {
     margin: 30px 2px;
 }
 
-.pagination--pageNumber{
+.pagination--pageNumber {
     margin: 0 20px !important;
+}
+
+/* FeaturedMovie Component */
+.featured--movie--container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    height: 490px;
+    text-decoration: none;
+}
+
+.featured--movie--card {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+.featured--movie--cardmedia {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.575);
+    background-blend-mode: darken;
+}
+
+.featured--movie--cardcontent {
+    position: relative;
+    background-color: transparent;
+    color: #fff;
+    width: 40%;
+}
+
+@media (max-width: 600px) {
+    .featured--movie--cardcontent {
+        width: 100%;
+    }
 }

@@ -30,7 +30,7 @@ const Pagination = ({ currentPage, totalPages, setPage }) => {
     return (
         <>
             <div className="pagination--container">
-                <Button onClick={handlePrev} className="pagination--button" variant='contained' type='button' style={{ color: theme.palette.color }}>Prev</Button>
+                {currentPage !== 1 && <Button onClick={handlePrev} className="pagination--button" variant='contained' type='button' style={{ color: theme.palette.color }}>Prev</Button>}
                 <Typography variant='h4' className='pagination--pageNumber'>{currentPage}</Typography>
                 {currentPage !== totalPages && <Button onClick={handleNext} className="pagination--button" variant='contained' type='button' style={{ color: theme.palette.color }}>Next</Button>}
             </div>

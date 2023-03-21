@@ -1,5 +1,5 @@
-import React from 'react'
-import { Divider, List, ListItem, ListItemText, ListSubheader, ListItemIcon, Box, CircularProgress, Typography } from '@mui/material'
+import React, { useEffect } from 'react'
+import { Divider, List, ListItem, ListSubheader, ListItemIcon, Box, CircularProgress, Typography } from '@mui/material'
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles'
 // import './styles.css'
@@ -26,6 +26,11 @@ const Sidebar = ({ setMobileOpen }) => {
     const genreIdOrCategoryName = useSelector((state) => state.currentGenreOrCategory)
     // console.log(genreIdOrCategoryName)
     // console.log(data)
+
+    useEffect(() => {
+        setMobileOpen(false);
+    }, [genreIdOrCategoryName])
+    
     return (
         <>
             <Link to="/" className='sidebar-image-link'>

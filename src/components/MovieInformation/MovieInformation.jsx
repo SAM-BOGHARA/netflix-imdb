@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectGenreOrCategory } from '../../features/createGenreOrCategory';
 import { MovieList } from "..";
 import { userSelector } from '../../features/auth';
-import {useTheme} from '@mui/material';
+import { useTheme } from '@mui/material';
 
 const MovieInformation = () => {
   const theme = useTheme();
@@ -18,11 +18,10 @@ const MovieInformation = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [open, setopen] = useState(false);
-  const { data: recommendations, isFetching: isRecommendationsFetching, error: isErrorInRecommendations } = useGetRecommendationsQuery({ list: `/recommendations`, movie_id: id })
-  
-  const { data: favoriteMovies } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page : 1 })
-  const { data: watchlistMovies } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page : 1 })
   const { data, isFetching, error } = useGetMovieQuery(id);
+  const { data: recommendations, isFetching: isRecommendationsFetching, error: isErrorInRecommendations } = useGetRecommendationsQuery({ list: `/recommendations`, movie_id: id })
+  const { data: favoriteMovies } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 })
+  const { data: watchlistMovies } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 })
   const [isMovieFavorited, setisMovieFavorited] = useState(false)
   const [isMovieWatchlisted, setisMovieWatchlisted] = useState(false)
 
@@ -30,13 +29,13 @@ const MovieInformation = () => {
   useEffect(() => {
     setisMovieFavorited(!!favoriteMovies?.results?.find((movie) => movie?.id === data?.id))
   }, [favoriteMovies, data]);
-  
+
 
   useEffect(() => {
     setisMovieWatchlisted(!!watchlistMovies?.results?.find((movie) => movie?.id === data?.id))
   }, [watchlistMovies, data]);
 
-// https://api.themoviedb.org/3/account/12689766/favorite/movies?api_key=39c8b7879c058f7b1551bf4f266ae699&session_id=2904a56cb4537ef7dfdd710072bafaf8bb71a9f5&language=en-US&sort_by=created_at.asc&page=1
+  // https://api.themoviedb.org/3/account/12689766/favorite/movies?api_key=39c8b7879c058f7b1551bf4f266ae699&session_id=2904a56cb4537ef7dfdd710072bafaf8bb71a9f5&language=en-US&sort_by=created_at.asc&page=1
 
 
 
@@ -48,7 +47,7 @@ const MovieInformation = () => {
       media_id: id,
       favorite: !isMovieFavorited
     })
-    
+
     setisMovieFavorited((prev) => !prev)
   }
 
@@ -57,7 +56,7 @@ const MovieInformation = () => {
       media_type: 'movie',
       media_id: id,
       watchlist: !isMovieWatchlisted,
- 
+
     })
     setisMovieWatchlisted((prev) => !prev)
   }
@@ -68,7 +67,7 @@ const MovieInformation = () => {
   // console.log(data)
   console.log(recommendations)
 
-  if (isFetching) {
+  if (isFetching || isRecommendationsFetching) {
     return (
       <Box display="flex" justifyContent="center">
         <CircularProgress size="4rem" />
@@ -76,7 +75,7 @@ const MovieInformation = () => {
     )
   }
 
-  if (error) {
+  if (error || isErrorInRecommendations) {
     return (
       <Box display="flex" justifyContent="center">
         <Link to="/">Something has gone wrong go back</Link>
@@ -106,7 +105,7 @@ const MovieInformation = () => {
             </Typography>
           </Box>
           <Typography variant="h6" align='center' gutterBottom>
-            {data?.runtime}min | Language : {data?.spoken_languages[0].name}
+            {data?.runtime}min | Language : {data?.spoken_languages[0]?.name}
           </Typography>
         </Grid>
         <Grid item className='movieinfo--genres--container'>
@@ -161,10 +160,8 @@ const MovieInformation = () => {
                 <Button onClick={addToWatchlist} endIcon={isMovieWatchlisted ? <Remove /> : <PlusOne />}>
                   {isMovieWatchlisted ? 'Remove' : 'Watchlist'}
                 </Button>
-                <Button endIcon={<ArrowBack />} sx={{ borderColor: 'primary.main' }} >
-                  <Typography component={Link} to='/' color='inherit' variant='subtitle2' style={{ textDecoration: 'none' }} >
-                    Back
-                  </Typography>
+                <Button endIcon={<ArrowBack />} sx={{ borderColor: 'primary.main' }}   >
+                  BACK
                 </Button>
               </ButtonGroup>
             </Grid>
@@ -175,15 +172,15 @@ const MovieInformation = () => {
 
 
       <Box marginTop='5rem' width='100%'>
-        <Typography variant='h3' gutterBottom align='center' >
+        <Typography variant='h3' color="textPrimary" gutterBottom align='center' >
           You might also like
         </Typography>
         {recommendations
-          ? <MovieList movies={recommendations} numberOfMovies={12}>
-          </MovieList>
-          : <Box>Sorry, nothing was found!</Box>}
+          ? <MovieList key={id} movies={recommendations} numberOfMovies={recommendations.results.length < 12 ? recommendations.results.length : 12}></MovieList>
+          : <Box>Sorry, nothing was found!</Box>
+        }
       </Box>
-
+        {console.log(id)}
       {console.log(data.videos.results[0].key)}
       <Modal closeAfterTransition className='movieinfo--modal' open={open} onClose={() => { setopen(false) }}
       >

@@ -13,7 +13,7 @@ const Actors = () => {
     const [page, setPage] = useState(1)
     const { data, isFetching, error } = useGetActorDetailsQuery(id);
     const { data : actorMovies, isFetching: isFetchingActorMovies, error : isErrorInActorMovies} = useGetMoviesByActorIdQuery({ id, page });
-    console.log(data)
+    // console.log(data)
     if (isFetching) {
         return (
             <Box display="flex" justifyContent="center">

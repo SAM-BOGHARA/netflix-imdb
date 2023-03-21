@@ -19,7 +19,7 @@ const NavBar = () => {
   const token = localStorage.getItem("request_token");
   const sessionIdFromLocalStorage = localStorage.getItem("session_id");
   const colorMode = useContext(ColorModeContext)
-  // console.log(user)
+  // console(user)
 
   useEffect(() => {
     const logInUser = async () => {
@@ -70,7 +70,8 @@ const NavBar = () => {
                 className='menubutton'
                 onClick={() => { }} >
                 {!isMobile && <>My Movies &nbsp;</>}
-                <Avatar style={{ width: 30, height: 30 }} alt="Profile" src='https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png' />
+                  <Avatar style={{ width: 30, height: 30 }} alt="Profile"
+                    src={`https://www.themoviedb.org/t/p/w64_and_h64_face${user?.avatar?.tmdb?.avatar_path}`} />
               </Button>
             )
             }
@@ -94,8 +95,7 @@ const NavBar = () => {
               ModalProps={{ keepMounted: true }}
             >
               <Sidebar
-
-                setmobileOpen={setmobileOpen}
+                setMobileOpen={setmobileOpen}
               />
             </Drawer>
           ) : (

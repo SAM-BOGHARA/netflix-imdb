@@ -28,7 +28,7 @@ const Search = () => {
                 variant="standard"
                 onChange={(e) => setquery(e.target.value)}
                 InputProps={{
-                    className : "input",
+                    className: "input",
                     startAdornment: (
                         <InputAdornment position='start'>
                             <SearchIcon />

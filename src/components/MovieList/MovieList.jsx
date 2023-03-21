@@ -4,13 +4,17 @@ import { Grid } from '@mui/material';
 import { Movie } from '..';
 import '../global.css'
 
-const MovieList = (props) => {
-    const { results } = props.movies;
-    const noOfMovies = props.numberOfMovies;
+const MovieList = ({ movies, numberOfMovies, excludeFirst }) => {
+
+    const results = movies.results;
+    // const noOfMovies = numberOfMovies;
+    const noOfMovies = Math.min(numberOfMovies, results.length);
+    const startFrom = excludeFirst ? 1 : 0
+
     return (
         <Grid container className='movies-container' >
-            {results.slice(0, noOfMovies).map((movie, idx) => (
-                <Movie key={idx} movie={movie} i={idx} />
+            {results.slice(startFrom, noOfMovies).map((movie, idx) => (
+                <Movie key={movie.title} movie={movie} i={idx} />
             ))}
         </Grid>
     )
